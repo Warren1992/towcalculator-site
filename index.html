@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="/favicon.ico">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Towing Calculator — Payload + Trailer Type (Car Trailer & Travel Trailer)</title>
+  <meta name="description" content="Tow calculator optimized for car trailers and travel trailers. Estimates tongue/pin weight, payload usage, optional tow/receiver ratings, and optional combined weight (GCWR) checks." />
+  <style>
+    :root { --bg:#0b1220; --card:#111b2e; --text:#e7eefc; --muted:#a6b6d6; --border:#233257; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#071021,#0b1220); color:var(--text); }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 24px; }
+    header { padding: 16px 0 8px; }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: .2px; }
+    p { margin: 8px 0; color: var(--muted); line-height: 1.45; }
+    .grid { display:grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 980px){ .grid { grid-template-columns: 1.15fr .85fr; } }
+    .card { background: rgba(17,27,46,.92); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+    .card h2 { margin: 0 0 10px; font-size: 18px; }
+    .row { display:grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0; }
+    @media (min-width: 560px){ .row.two { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 560px){ .row.three { grid-template-columns: 1fr 1fr 1fr; } }
+    label { display:block; font-size: 13px; color: var(--muted); margin: 2px 0 6px; }
+    input, select { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border); background: #0b1428; color: var(--text); outline: none; }
+    input:focus, select:focus { border-color: #4f7cff; box-shadow: 0 0 0 3px rgba(79,124,255,.2); }
+    .btns { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    button { cursor:pointer; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background:#132342; color:var(--text); }
+    button.primary { background:#2b57ff; border-color:#2b57ff; }
+    button:hover { filter: brightness(1.05); }
+    .badges { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .badge { padding: 6px 10px; border-radius: 999px; border:1px solid var(--border); font-size: 12px; color: var(--muted); background: rgba(11,20,40,.8); }
+    .result { margin-top: 12px; border-radius: 14px; padding: 12px; border: 1px solid var(--border); background: rgba(11,20,40,.75); }
+    .status { display:flex; align-items:center; gap:10px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background:#64748b; box-shadow: 0 0 0 4px rgba(100,116,139,.15); }
+    .dot.green { background:#22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
+    .dot.yellow { background:#f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,.15); }
+    .dot.red { background:#ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.15); }
+    .kpis { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .kpi { padding: 10px 12px; border-radius: 14px; border: 1px solid var(--border); background: rgba(7,16,33,.6); }
+    .kpi .v { font-size: 18px; font-weight: 700; margin-top: 2px; }
+    .kpi .l { font-size: 12px; color: var(--muted); }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    .small { font-size: 12px; color: var(--muted); }
+    .warn { color:#ffd18a; }
+    .legal { border-left: 3px solid #2b57ff; padding-left: 10px; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    footer { margin-top: 18px; font-size: 12px; color: var(--muted); }
+    a { color:#9bb5ff; }
+    .hr { border:0;border-top:1px solid var(--border); margin:14px 0; }
+    .toggleRow { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius: 12px; border: 1px solid var(--border); background: rgba(7,16,33,.45); }
+    .toggleRow input { width:auto; transform: scale(1.2); }
+    .guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(11,20,40,.6);
+  color: #9bb5ff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.guide-link:hover {
+  background: rgba(43,87,255,.12);
+  border-color: #2b57ff;
+  color: #c7d5ff;
+}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Towing Calculator (Car Trailers + Travel Trailers)</h1>
+      <p class="legal">
+        Conservative estimates for <b>payload</b> + <b>tongue/pin weight</b>. Always verify with your door sticker,
+        owner’s manual, receiver label, tire load ratings, and ideally a CAT scale weigh-in.
+      </p>
+      <div class="badges">
+        <div class="badge">Payload-first</div>
+        <div class="badge">Trailer-type aware</div>
+        <div class="badge">No backend • runs in your browser</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>1) Vehicle inputs</h2>
+
+        <div class="row two">
+          <div>
+            <label for="payload">Payload rating (lb) — door sticker</label>
+            <input id="payload" type="number" min="0" step="1" placeholder="Example: 1450" />
+            <div class="hint">Find this on the yellow/white sticker inside the driver door — not the brochure tow rating.</div>
+          </div>
+          <div>
+            <label for="towRating">Tow rating (lb) — optional</label>
+            <input id="towRating" type="number" min="0" step="1" placeholder="Example: 8000" />
+          </div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label for="passengers">Passengers total weight (lb)</label>
+            <input id="passengers" type="number" min="0" step="1" placeholder="Example: 350" />
+          </div>
+          <div>
+            <label for="cargo">Cargo in vehicle (lb)</label>
+            <input id="cargo" type="number" min="0" step="1" placeholder="Cooler, tools, bed platform, etc." />
+          </div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label for="hitchHardware">Hitch + accessories (lb)</label>
+            <input id="hitchHardware" type="number" min="0" step="1" value="60" />
+            <div class="hint">Default 60 lb. Add more for weight-distribution hitch (WDH), racks, etc.</div>
+          </div>
+          <div>
+            <label for="gcwr">GCWR (lb) — optional advanced</label>
+            <input id="gcwr" type="number" min="0" step="1" placeholder="Owner’s manual combined weight limit" />
+            <div class="hint">If you enter GCWR, you can also enter estimated vehicle actual weight below.</div>
+          </div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label for="vehicleActual">Estimated vehicle actual weight (lb) — optional</label>
+            <input id="vehicleActual" type="number" min="0" step="1" placeholder="Curb + people + cargo (or CAT scale)" />
+          </div>
+          <div>
+            <label for="vehicleNotes">Notes (optional)</label>
+            <input id="vehicleNotes" type="text" placeholder="2010 Suburban 1500, 5.3L, etc." />
+          </div>
+        </div>
+
+        <hr class="hr" />
+
+        <h2>2) Trailer inputs (choose trailer type)</h2>
+
+        <div class="row three">
+          <div>
+            <label for="trailerType">Trailer type</label>
+            <select id="trailerType">
+              <option value="car" selected>Car trailer / utility / flatbed (bumper-pull)</option>
+              <option value="travel">Travel trailer / camper (bumper-pull)</option>
+              <option value="fifth">5th wheel / gooseneck</option>
+            </select>
+            <div class="hint" id="typeHint">Typical tongue weight range: 10–15%.</div>
+          </div>
+          <div>
+            <label for="trailerWeight">Trailer weight (lb) — loaded</label>
+            <input id="trailerWeight" type="number" min="0" step="1" placeholder="Trailer + load as actually towed" />
+          </div>
+          <div>
+            <label for="twPct">Tongue/Pin weight %</label>
+            <select id="twPct"></select>
+            <div class="hint" id="twHint">Start with the default unless you have real scale numbers.</div>
+          </div>
+        </div>
+
+        <div class="row two">
+          <div class="toggleRow">
+            <input id="wdh" type="checkbox" />
+            <label for="wdh" style="margin:0; color:var(--text); font-size:13px;">Using a Weight Distribution Hitch (WDH)?</label>
+          </div>
+          <div>
+            <label for="trailerBrakes">Trailer has brakes?</label>
+            <select id="trailerBrakes">
+              <option value="unknown" selected>Unknown / not sure</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            <div class="hint">Travel trailers and heavier car trailers typically need brakes + controller.</div>
+          </div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label for="receiverTW">Receiver max tongue weight (lb) — optional</label>
+            <input id="receiverTW" type="number" min="0" step="1" placeholder="Example: 600" />
+          </div>
+          <div>
+            <label for="receiverTow">Receiver max trailer weight (lb) — optional</label>
+            <input id="receiverTow" type="number" min="0" step="1" placeholder="Example: 6000" />
+          </div>
+        </div>
+
+        <div class="btns">
+          <button class="primary" id="calcBtn">Check my towing setup</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="small warn" style="margin-top:10px;">
+          Most “tow rating” setups fail on <b>payload</b> first: people + cargo + hitch + tongue/pin weight.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Results</h2>
+        <div id="resultBox" class="result">
+          <div class="status">
+            <div class="dot" id="statusDot"></div>
+            <div>
+              <div style="font-weight:700" id="statusTitle">Enter your numbers and click Calculate</div>
+              <div class="small" id="statusSubtitle">Trailer type changes the tongue/pin weight assumptions.</div>
+              <div class="small" id="statusMeaning" style="margin-top:6px;">Enter your numbers, then check your setup.</div>
+            </div>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="l">Estimated tongue / pin weight</div>
+              <div class="v" id="kpiTongue">—</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Payload remaining</div>
+              <div class="v" id="kpiPayloadLeft">—</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Used payload (est.)</div>
+              <div class="v" id="kpiPayloadUsed">—</div>
+            </div>
+            <div class="kpi">
+              <div class="l">Trailer vs tow rating</div>
+              <div class="v" id="kpiTowCheck">—</div>
+            </div>
+          </div>
+
+          <div class="kpis" style="margin-top:10px;">
+            <div class="kpi">
+              <div class="l">Combined weight (if GCWR used)</div>
+              <div class="v" id="kpiCombined">—</div>
+            </div>
+            <div class="kpi">
+              <div class="l">GCWR check</div>
+              <div class="v" id="kpiGcwrCheck">—</div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <div style="font-weight:700; margin-bottom:6px;">Warnings & next steps</div>
+            <ul id="warningsList"></ul>
+          </div>
+
+          <div class="small" style="margin-top:10px;">
+            <b>Important:</b> Informational only. Verify ratings with sticker/manual and confirm real weights at a scale.
+          </div>
+        </div>
+
+        <footer>
+            <a href="/blog/" class="guide-link">
+                📘 Read towing guides →
+              </a>              
+          <div class="small" style="margin-top:8px;">
+            ©2026 Tow Calculator
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  function num(v) {
+    const n = parseFloat(v);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function fmtLb(n) {
+    if (!Number.isFinite(n)) return "—";
+    const sign = n < 0 ? "-" : "";
+    return sign + Math.round(Math.abs(n)).toLocaleString() + " lb";
+  }
+
+  function setStatus(level, title, subtitle, meaning) {
+    const dot = $("statusDot");
+    dot.className = "dot " + (level || "");
+    $("statusTitle").textContent = title;
+    $("statusSubtitle").textContent = subtitle || "";
+    $("statusMeaning").textContent = meaning || "";
+  }
+
+  function addWarning(arr, text) { arr.push(text); }
+
+  // Trailer type profiles: ranges & default behavior
+  const PROFILES = {
+    car: {
+      name: "Car trailer / utility (bumper-pull)",
+      hint: "Typical tongue weight range: 10–15%.",
+      pctOptions: [
+        { v: 0.10, t: "10% (minimum typical)" },
+        { v: 0.12, t: "12% (common)" },
+        { v: 0.15, t: "15% (conservative)" }
+      ],
+      defaultPct: 0.12
+    },
+    travel: {
+      name: "Travel trailer / camper (bumper-pull)",
+      hint: "Typical tongue weight range: 12–15% (often higher than car trailers).",
+      pctOptions: [
+        { v: 0.12, t: "12% (minimum typical)" },
+        { v: 0.13, t: "13% (common)" },
+        { v: 0.15, t: "15% (conservative)" }
+      ],
+      defaultPct: 0.13
+    },
+    fifth: {
+      name: "5th wheel / gooseneck",
+      hint: "Typical pin weight range: 15–25% (much higher payload impact).",
+      pctOptions: [
+        { v: 0.15, t: "15% (light pin)" },
+        { v: 0.20, t: "20% (common)" },
+        { v: 0.25, t: "25% (conservative)" }
+      ],
+      defaultPct: 0.20
+    }
+  };
+
+  function populatePctOptions(typeKey) {
+    const profile = PROFILES[typeKey];
+    const sel = $("twPct");
+    sel.innerHTML = "";
+    profile.pctOptions.forEach(o => {
+      const opt = document.createElement("option");
+      opt.value = String(o.v);
+      opt.textContent = o.t;
+      sel.appendChild(opt);
+    });
+    sel.value = String(profile.defaultPct);
+    $("typeHint").textContent = profile.hint;
+
+    // WDH is mainly for travel trailers; keep it available but nudge user
+    if (typeKey === "travel") {
+      $("wdh").disabled = false;
+      $("twHint").textContent = "Travel trailers often benefit from a properly sized WDH (does not remove payload; it redistributes).";
+    } else if (typeKey === "car") {
+      $("wdh").disabled = false;
+      $("twHint").textContent = "Car trailers usually run best with correct tongue weight and trailer brakes where required.";
+    } else {
+      $("wdh").checked = false;
+      $("wdh").disabled = true;
+      $("twHint").textContent = "5th wheels use pin weight and a different hitch system. WDH toggle disabled.";
+    }
+  }
+
+  function calculate() {
+    const trailerType = $("trailerType").value;
+    const profile = PROFILES[trailerType];
+
+    const payload = num($("payload").value);
+    const towRating = num($("towRating").value);
+    const passengers = num($("passengers").value);
+    const cargo = num($("cargo").value);
+    const hitchHardware = num($("hitchHardware").value);
+
+    const trailerWeight = num($("trailerWeight").value);
+    const twPct = num($("twPct").value);
+
+    const wdh = $("wdh").checked;
+    const brakes = $("trailerBrakes").value;
+
+    const receiverTW = num($("receiverTW").value);
+    const receiverTow = num($("receiverTow").value);
+
+    const gcwr = num($("gcwr").value);
+    const vehicleActual = num($("vehicleActual").value);
+
+    const warnings = [];
+
+    // Validation
+    if (payload <= 0) addWarning(warnings, "Enter your vehicle payload rating from the door sticker (most important input).");
+    if (trailerWeight <= 0) addWarning(warnings, "Enter your trailer weight (loaded). Use conservative numbers if you’re unsure.");
+
+    // Tongue/pin weight estimate
+    const tongue = trailerWeight * twPct;
+
+    // Payload usage
+    const payloadUsed = passengers + cargo + hitchHardware + tongue;
+    const payloadLeft = payload - payloadUsed;
+
+    // Tow rating check (optional)
+    let towCheckText = "—";
+    if (towRating > 0 && trailerWeight > 0) {
+      const diff = towRating - trailerWeight;
+      towCheckText = (diff >= 0)
+        ? ("OK (" + Math.round(diff).toLocaleString() + " lb margin)")
+        : ("OVER (" + Math.round(Math.abs(diff)).toLocaleString() + " lb)");
+      if (diff < 0) addWarning(warnings, "Trailer weight exceeds the vehicle’s tow rating. Reduce trailer weight or choose a higher-rated tow vehicle.");
+    } else if (towRating === 0) {
+      towCheckText = "Not provided";
+      addWarning(warnings, "Tow rating not provided. Verify in the owner’s manual (payload can still fail first).");
+    }
+
+    // Receiver checks (optional)
+    if (receiverTW > 0 && tongue > 0 && tongue > receiverTW) {
+      addWarning(warnings, "Estimated tongue/pin weight exceeds receiver/hitch max tongue weight rating. Verify the receiver label (hard limit).");
+    }
+    if (receiverTow > 0 && trailerWeight > 0 && trailerWeight > receiverTow) {
+      addWarning(warnings, "Trailer weight exceeds receiver/hitch max trailer weight rating. Verify hitch class/label.");
+    }
+
+    // Tongue/pin % sanity checks by type
+    if (trailerWeight > 0) {
+      const pct = tongue / trailerWeight;
+
+      if (trailerType === "car") {
+        if (pct < 0.10) addWarning(warnings, "Tongue weight seems low (<10%). Low TW increases sway risk. Recheck inputs and load balance.");
+        if (pct > 0.16) addWarning(warnings, "Tongue weight seems high (>16%). Verify load placement and ratings; recheck inputs.");
+      }
+
+      if (trailerType === "travel") {
+        if (pct < 0.12) addWarning(warnings, "Tongue weight seems low (<12%) for a travel trailer. Travel trailers often sway if TW is too low.");
+        if (pct > 0.17) addWarning(warnings, "Tongue weight seems high (>17%). Verify load placement, consider WDH, and recheck ratings.");
+        if (!wdh && trailerWeight >= 5000) addWarning(warnings, "Many travel trailers around 5,000 lb+ handle better with a properly sized WDH (check your manual).");
+        if (wdh) addWarning(warnings, "WDH can improve handling by redistributing load, but tongue weight still counts against payload. Confirm receiver ratings for WDH use.");
+      }
+
+      if (trailerType === "fifth") {
+        if (pct < 0.15) addWarning(warnings, "Pin weight seems low (<15%) for a 5th wheel/gooseneck. Recheck inputs.");
+        if (pct > 0.27) addWarning(warnings, "Pin weight seems very high (>27%). Recheck inputs and verify ratings.");
+        addWarning(warnings, "5th wheels/goosenecks hit payload fast. Confirm truck payload, rear axle limits, and tire ratings.");
+      }
+    }
+
+    // Payload warnings
+    if (payload > 0) {
+      if (payloadLeft < 0) {
+        addWarning(warnings, "You exceed payload (door sticker). This is one of the most common real-world failure points.");
+        addWarning(warnings, "Fix: reduce passengers/cargo, reduce tongue/pin weight (lighter trailer or load), or use a higher-payload tow vehicle.");
+      } else if (payloadLeft < 150) {
+        addWarning(warnings, "Very tight payload margin (<150 lb). Small errors or extra gear can put you over.");
+      } else if (payloadLeft < 300) {
+        addWarning(warnings, "Tight payload margin (<300 lb). Be conservative and consider a weigh-in.");
+      }
+    }
+
+    // Brake guidance
+    if (trailerWeight > 3000) {
+      if (brakes === "no") addWarning(warnings, "A trailer this heavy without brakes is a major safety issue (and often illegal). Verify your local requirements.");
+      if (brakes === "unknown") addWarning(warnings, "If the trailer is this heavy, it likely needs trailer brakes + a brake controller. Verify trailer equipment and laws.");
+      if (brakes === "yes") addWarning(warnings, "Ensure your brake controller is correctly set. Trailer brakes are critical for safe stopping.");
+    }
+
+    // GCWR / combined check (optional)
+    let combined = NaN;
+    let gcwrCheckText = "Not used";
+    if (gcwr > 0 && vehicleActual > 0 && trailerWeight > 0) {
+      combined = vehicleActual + trailerWeight;
+      const diff = gcwr - combined;
+      gcwrCheckText = (diff >= 0)
+        ? ("OK (" + Math.round(diff).toLocaleString() + " lb margin)")
+        : ("OVER (" + Math.round(Math.abs(diff)).toLocaleString() + " lb)");
+      if (diff < 0) addWarning(warnings, "Estimated combined weight exceeds GCWR. Reduce weight or choose a higher-rated tow vehicle.");
+    } else if (gcwr > 0 && (vehicleActual === 0 || trailerWeight === 0)) {
+      gcwrCheckText = "Need vehicle actual + trailer";
+      addWarning(warnings, "To use GCWR, enter estimated vehicle actual weight (or scale weight) and trailer loaded weight.");
+    }
+
+    // Best-practice reminders
+    addWarning(warnings, "Best practice: do a CAT scale weigh-in to confirm real vehicle/trailer weights and axle loads.");
+
+    // Update KPIs
+    $("kpiTongue").textContent = fmtLb(tongue);
+    $("kpiPayloadUsed").textContent = (payloadUsed > 0) ? fmtLb(payloadUsed) : "—";
+    $("kpiPayloadLeft").textContent = (payload > 0) ? fmtLb(payloadLeft) : "—";
+    $("kpiTowCheck").textContent = towCheckText;
+
+    $("kpiCombined").textContent = Number.isFinite(combined) ? fmtLb(combined) : "—";
+    $("kpiGcwrCheck").textContent = gcwrCheckText;
+
+    // Render warnings
+    const ul = $("warningsList");
+    ul.innerHTML = "";
+    const uniqueWarnings = Array.from(new Set(warnings));
+    if (uniqueWarnings.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No warnings. Still verify ratings and consider a real weigh-in.";
+      ul.appendChild(li);
+    } else {
+      uniqueWarnings.forEach(w => {
+        const li = document.createElement("li");
+        li.textContent = w;
+        ul.appendChild(li);
+      });
+    }
+
+    // Overall status (conservative)
+    let level = "green";
+    const overPayload = payload > 0 && payloadLeft < 0;
+    const tightPayload = payload > 0 && payloadLeft < 300;
+    const overTow = towRating > 0 && trailerWeight > towRating;
+    const overReceiverTW = receiverTW > 0 && tongue > receiverTW;
+    const overReceiverTow = receiverTow > 0 && trailerWeight > receiverTow;
+    const overGcwr = (gcwr > 0 && vehicleActual > 0 && trailerWeight > 0) && ((vehicleActual + trailerWeight) > gcwr);
+
+    if (overPayload || overTow || overReceiverTW || overReceiverTow || overGcwr) level = "red";
+    else if (tightPayload) level = "yellow";
+
+    if (level === "red") {
+      setStatus(
+        "red",
+        "High risk: likely overloaded / exceeds a rating",
+        "Primary issues: payload and/or ratings. Reduce weight or change equipment/vehicle.",
+        "One or more limits appear exceeded. This setup likely needs changes."
+      );
+    } else if (level === "yellow") {
+      setStatus(
+        "yellow",
+        "Caution: tight margins",
+        "Double-check inputs, be conservative, and confirm with a weigh-in.",
+        "Margins are tight. Small changes in load could exceed ratings."
+      );
+    } else {
+      setStatus(
+        "green",
+        "Looks reasonable (based on inputs)",
+        "Still verify ratings and confirm with real weights.",
+        "Based on these inputs, payload and ratings appear within limits. Still verify with real weights."
+      );
+    }
+  }
+
+  function resetAll() {
+    ["payload","towRating","passengers","cargo","hitchHardware","trailerWeight","receiverTW","receiverTow","vehicleNotes","gcwr","vehicleActual"].forEach(id => {
+      if ($(id)) $(id).value = (id === "hitchHardware") ? "60" : "";
+    });
+    $("trailerType").value = "car";
+    populatePctOptions("car");
+    $("wdh").checked = false;
+    $("wdh").disabled = false;
+    $("trailerBrakes").value = "unknown";
+
+    ["kpiTongue","kpiPayloadUsed","kpiPayloadLeft","kpiTowCheck","kpiCombined","kpiGcwrCheck"].forEach(id => $(id).textContent = "—");
+    $("warningsList").innerHTML = "";
+    setStatus("", "Enter your numbers and click Calculate", "Trailer type changes the tongue/pin weight assumptions.", "Enter your numbers, then check your setup.");
+  }
+
+  // Wire up
+  $("calcBtn").addEventListener("click", calculate);
+  $("resetBtn").addEventListener("click", resetAll);
+
+  $("trailerType").addEventListener("change", () => {
+    populatePctOptions($("trailerType").value);
+  });
+
+  // Auto calc on Enter
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") calculate();
+  });
+
+  // init
+  populatePctOptions("car");
+  setStatus("", "Enter your numbers and click Calculate", "Trailer type changes the tongue/pin weight assumptions.", "Enter your numbers, then check your setup.");
+</script>
+</body>
+</html>
