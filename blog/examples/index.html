@@ -6,97 +6,188 @@
   <title>Towing Examples</title>
   <meta name="description" content="Real-world towing scenarios using actual vehicles and trailers." />
 
-  <head>
-  <meta charset="utf-8">
-  <title>Blog | TowCalculator</title>
-  <meta name="description" content="Practical towing guides focused on real-world payload limits, trailer weights, and safe setups." />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/favicon.ico">
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #0b1220;
-      color: #e7eefc;
-      line-height: 1.6;
+    :root{
+      --bg0:#050b18;
+      --bg1:#071228;
+      --card:#0a1832;
+      --card2:#09162e;
+      --border: rgba(255,255,255,.10);
+      --text:#e8f0ff;
+      --muted:#b8c7e6;
+      --muted2:#9fb1d6;
+      --accent:#9bb5ff;
+      --accent2:#c7d5ff;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
     }
-    .wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 32px 20px;
-    }
-    h1 {
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-    p {
-      color: #cbd5f5;
-    }
-    .post {
-      background: #111b2e;
-      border: 1px solid #233257;
-      border-radius: 14px;
-      padding: 20px;
-      margin-top: 20px;
-    }
-    .post h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-    .post a {
-      color: #9bb5ff;
-      text-decoration: none;
-    }
-    .post a:hover {
-      text-decoration: underline;
-    }
-    .meta {
-      font-size: 13px;
-      color: #a6b6d6;
-      margin-bottom: 10px;
-    }
-    .back {
-      display: inline-block;
-      margin-top: 32px;
-      color: #9bb5ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
-</head>
-  <style>
-    /* PASTE YOUR BLOG CSS HERE (from blog/index.html) */
 
-    /* Small extras for this page (safe to keep even if you already have them) */
-    .post-list { margin-top: 18px; padding-left: 18px; }
-    .post-list li { margin: 10px 0; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(43,87,255,.20), transparent 60%),
+        radial-gradient(900px 600px at 80% 30%, rgba(0,210,255,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 18px 80px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      margin-bottom: 18px;
+    }
+
+    .back{
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:.2px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .back:hover{ color: var(--accent2); text-decoration: underline; }
+
+    h1{
+      margin: 8px 0 10px;
+      font-size: 48px;
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+    }
+
+    .subtitle{
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 70ch;
+    }
+
+    .grid{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .card a{
+      text-decoration:none;
+      color: inherit;
+      display:block;
+    }
+
+    .title{
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.15;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+
+    .meta{
+      margin: 0 0 14px;
+      color: var(--muted2);
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+
+    .desc{
+      margin: 0;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.55;
+      opacity: .95;
+      max-width: 85ch;
+    }
+
+    .card:hover{
+      border-color: rgba(155,181,255,.45);
+      transform: translateY(-1px);
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .card:hover .title{
+      color: var(--accent2);
+      transition: color .12s ease;
+    }
+
+    .footer{
+      margin-top: 28px;
+      color: rgba(184,199,230,.85);
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px){
+      h1{ font-size: 38px; }
+      .subtitle{ font-size: 16px; }
+      .card{ padding: 20px 18px; }
+      .title{ font-size: 24px; }
+      .desc{ font-size: 16px; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- ✅ Use the same wrapper/layout your blog uses -->
-  <div class="container">
+  <main class="wrap">
+    <div class="topbar">
+      <!-- from /blog/examples/ back to /blog/ -->
+      <a class="back" href="../">← Back to Blog</a>
+    </div>
 
-    <!-- Back link (note the path from /blog/examples/ back to /blog/) -->
-    <a class="back" href="../">← Back to Blog</a>
+    <h1>Examples</h1>
+    <p class="subtitle">
+      Real-world towing scenarios using actual vehicles and trailers — focused on payload limits,
+      tongue/pin weight, and the common “it tows fine but I’m overloaded” mistakes.
+    </p>
 
-    <h1>Towing Examples</h1>
-    <p class="muted">Real-world towing scenarios using actual vehicles and trailers.</p>
-
-    <ul class="post-list">
-      <li>
+    <section class="grid">
+      <!-- Example #1 -->
+      <article class="card">
         <a href="../can-a-suburban-tow-a-car-trailer.html">
-          Can a Suburban Tow a Car Trailer?
+          <h2 class="title">Can a Chevy Suburban Tow a Car Trailer?</h2>
+          <p class="meta">Vehicle example • Car trailer towing</p>
+          <p class="desc">
+            A payload-first breakdown of a realistic Suburban + car trailer setup, including tongue weight,
+            passengers, and cargo.
+          </p>
         </a>
-      </li>
-      <li>
-        <a href="../how-heavy-is-a-uhaul-car-trailer.html">
-          How Heavy Is a U-Haul Car Trailer Really?
-        </a>
-      </li>
-    </ul>
+      </article>
 
-  </div>
+      <!-- Example #2 -->
+      <article class="card">
+        <a href="../how-heavy-is-a-uhaul-car-trailer.html">
+          <h2 class="title">How Heavy Is a U-Haul Car Trailer Really?</h2>
+          <p class="meta">Trailer example • U-Haul weights</p>
+          <p class="desc">
+            Realistic weights, what the trailer actually adds, and why tongue weight can hit payload limits
+            faster than people expect.
+          </p>
+        </a>
+      </article>
+    </section>
+
+    <p class="footer">
+      Tip: Want a specific scenario? Start with the calculator and then pick an example that matches your vehicle/trailer type.
+    </p>
+  </main>
 </body>
 </html>
-
