@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How to Weigh Your Truck + Trailer at a CAT Scale (Step-by-Step) | TowCalculator</title>
+  <meta name="description" content="Step-by-step CAT scale guide for towing. Learn exactly what to weigh, how to do 2–3 passes, and how to compare results to GVWR, GAWR, GCWR, and payload safely." />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #0b1220;
+      color: #e7eefc;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+    h1, h2 {
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin-top: 36px;
+    }
+    p { color: #cbd5f5; }
+    a { color: #9bb5ff; }
+
+    .callout {
+      background: #111b2e;
+      border-left: 4px solid #2b57ff;
+      padding: 16px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    .cta {
+      background: #132342;
+      border: 1px solid #233257;
+      padding: 20px;
+      margin: 32px 0;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: #2b57ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 48px;
+      font-size: 13px;
+      color: #a6b6d6;
+    }
+
+    .post-tags { margin: 12px 0 20px; }
+    .post-tags a {
+      font-size: 13px;
+      color: #9bb5ff;
+      text-decoration: none;
+      border: 1px solid #2b57ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .post-tags a:hover { background: rgba(43,87,255,.15); }
+
+    /* Tag pill (Examples / Guides) */
+    .tag {
+      display: inline-block;
+      font-size: 13px;
+      color: #9bb5ff;
+      text-decoration: none;
+      border: 1px solid #2b57ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .tag:hover {
+      background: rgba(43,87,255,.15);
+      color: #c7d5ff;
+    }
+
+    /* Optional small inline code style */
+    code {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: #e7eefc;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <p class="post-tags">
+      <a href="/blog/guides/">Guides</a>
+    </p>
+
+    <h1>How to Weigh Your Truck + Trailer at a CAT Scale (Step-by-Step)</h1>
+
+    <p>
+      If you want to know whether your towing setup is actually safe, a real weigh-in beats any spreadsheet,
+      brochure, or guess.
+    </p>
+
+    <p>
+      The good news: weighing a tow vehicle and trailer is simple if you do it in the right order.
+      This guide walks you through exactly what to weigh and how to interpret the numbers.
+    </p>
+
+    <div class="callout">
+      <strong>Why this matters:</strong><br>
+      Most “it tows fine” setups are overloaded on payload or rear axle long before they hit tow rating.
+      A scale makes the truth obvious.
+    </div>
+
+    <h2>What You Need Before You Go</h2>
+
+    <ul>
+      <li>Your vehicle’s door sticker payload and GVWR</li>
+      <li>Rear axle rating (RAWR) / GAWR (on sticker or manual)</li>
+      <li>Trailer GVWR (on trailer sticker)</li>
+      <li>Your rig loaded like a real trip (passengers, gear, full hitch hardware)</li>
+    </ul>
+
+    <p>
+      Ideally, load your trailer the way you actually travel: propane, batteries, water (if you carry it),
+      and your normal cargo.
+    </p>
+
+    <h2>Quick Definitions (So the Ticket Makes Sense)</h2>
+
+    <ul>
+      <li><strong>GVWR</strong>: max weight of the tow vehicle itself</li>
+      <li><strong>GAWR / RAWR</strong>: max weight on each axle (rear axle is the usual failure point)</li>
+      <li><strong>GCWR</strong>: max combined weight of vehicle + trailer (if you have it)</li>
+      <li><strong>Payload</strong>: how much weight you can add to the vehicle (people + cargo + hitch + tongue/pin)</li>
+    </ul>
+
+    <h2>The Best Weighing Method: 3 Passes</h2>
+
+    <p>
+      Three passes gives you the cleanest answers:
+      (1) vehicle alone, (2) hitched without weight distribution engaged, (3) hitched with weight distribution engaged (if you use it).
+    </p>
+
+    <div class="callout">
+      <strong>Important:</strong><br>
+      A weight distribution hitch can move weight between axles, but it does <em>not</em> make payload disappear.
+      Hitch hardware weight still counts.
+    </div>
+
+    <h2>Pass #1 — Tow Vehicle Only (Baseline)</h2>
+
+    <p>
+      Drive onto the scale with just the tow vehicle (no trailer).
+      If possible, load the vehicle with the same people and cargo you’ll have when towing.
+    </p>
+
+    <ul>
+      <li>Record front axle weight</li>
+      <li>Record rear axle weight</li>
+      <li>Record total vehicle weight</li>
+    </ul>
+
+    <p>
+      This is your baseline and makes the rest of the math simple.
+    </p>
+
+    <h2>Pass #2 — Hitched, WDH Not Engaged (If You Have One)</h2>
+
+    <p>
+      Hook up the trailer exactly how you tow it, but if you use a weight distribution hitch (WDH),
+      do this pass with the bars/chains not tensioned (or “not engaged”).
+    </p>
+
+    <ul>
+      <li>Front axle weight (vehicle)</li>
+      <li>Rear axle weight (vehicle)</li>
+      <li>Trailer axle weight(s)</li>
+      <li>Total combined weight</li>
+    </ul>
+
+    <p>
+      This pass is the easiest way to see how much the hitch load shifts weight to the rear axle.
+    </p>
+
+    <h2>Pass #3 — Hitched, WDH Engaged (If You Use It)</h2>
+
+    <p>
+      Now engage your WDH as you normally would and weigh again.
+      You’ll see weight move off the rear axle and back toward the front axle and trailer axles.
+    </p>
+
+    <p>
+      This pass answers: “Is my WDH adjustment helping axle balance?”
+      (It still doesn’t change your payload limit, but it can improve handling and stability.)
+    </p>
+
+    <h2>How to Read the Results</h2>
+
+    <p>
+      Here are the key checks most people care about:
+    </p>
+
+    <ul>
+      <li><strong>Vehicle GVWR check:</strong> your hitched vehicle total (front + rear) should be ≤ GVWR</li>
+      <li><strong>Rear axle check:</strong> rear axle should be ≤ RAWR/GAWR (this is the common one to fail)</li>
+      <li><strong>Trailer check:</strong> trailer axle total should be ≤ trailer GVWR (and tire ratings)</li>
+      <li><strong>Combined check:</strong> combined total should be ≤ GCWR (if you have it)</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Payload shortcut:</strong><br>
+      Payload used ≈ (hitched vehicle total) − (vehicle-only total).<br>
+      That “difference” includes tongue/pin weight + hitch hardware + anything you added for the trip.
+    </div>
+
+    <h2>What About Tongue Weight?</h2>
+
+    <p>
+      A simple estimate you can use:
+    </p>
+
+    <ul>
+      <li>Travel trailers: ~12–15% of loaded trailer weight on the hitch</li>
+      <li>Car trailers: ~10–15% (varies by load position)</li>
+      <li>5th wheels/goosenecks: often ~15–25% pin weight</li>
+    </ul>
+
+    <p>
+      The scale is the reality check. If your rear axle or payload margin is tight, tongue/pin weight is usually why.
+    </p>
+
+    <h2>If You’re Over: The Most Effective Fixes</h2>
+
+    <ul>
+      <li>Reduce tongue weight by moving cargo rearward in the trailer (carefully—maintain stability)</li>
+      <li>Remove cargo from the tow vehicle (payload is precious)</li>
+      <li>Carry less water/gear when possible</li>
+      <li>Upgrade tow vehicle (more payload is the real game-changer)</li>
+    </ul>
+
+    <div class="cta">
+      <strong>Want a quick estimate before you weigh?</strong>
+      <p>Use the calculator to estimate tongue/pin weight and payload usage — then verify at a scale.</p>
+      <a href="../">Use the Towing Calculator</a>
+    </div>
+
+    <footer>
+      Informational only. Always verify ratings with your vehicle/trailer stickers and follow manufacturer guidance.
+      Scale weights are the most reliable way to validate your real setup.
+    </footer>
+
+  </div>
+</body>
+</html>
