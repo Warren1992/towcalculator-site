@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://towcalculator.net/</loc>
+  </url>
+
+  <url>
+    <loc>https://towcalculator.net/blog/</loc>
+  </url>
+
+  <url>
+    <loc>https://towcalculator.net/blog/examples/</loc>
+  </url>
+
+  <url>
+    <loc>https://towcalculator.net/blog/guides/</loc>
+  </url>
+
+  <!-- EXAMPLES -->
+  <url>
+    <loc>https://towcalculator.net/blog/can-a-toyota-tacoma-tow-a-travel-trailer.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/can-a-ford-f150-tow-a-travel-trailer.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/can-a-jeep-grand-cherokee-tow-a-travel-trailer.html</loc>
+  </url>
+
+  <!-- GUIDES -->
+  <url>
+    <loc>https://towcalculator.net/blog/payload-vs-tow-rating.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/tongue-weight-explained.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/how-to-weigh-your-truck-trailer-at-a-cat-scale.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/weight-distribution-hitch-setup.html</loc>
+  </url>
+  <url>
+    <loc>https://towcalculator.net/blog/trailer-sway-why-it-happens.html</loc>
+  </url>
+
+</urlset>
