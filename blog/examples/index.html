@@ -10,8 +10,6 @@
     :root{
       --bg0:#050b18;
       --bg1:#071228;
-      --card:#0a1832;
-      --card2:#09162e;
       --border: rgba(255,255,255,.10);
       --text:#e8f0ff;
       --muted:#b8c7e6;
@@ -37,7 +35,7 @@
     .wrap{
       max-width: 980px;
       margin: 0 auto;
-      padding: 56px 18px 80px;
+      padding: 56px 18px 40px;
     }
 
     .topbar{
@@ -130,10 +128,52 @@
       transition: color .12s ease;
     }
 
-    .footer{
-      margin-top: 28px;
-      color: rgba(184,199,230,.85);
+    .tip{
+      margin-top: 26px;
+      color: rgba(184,199,230,.88);
       font-size: 13px;
+    }
+
+    /* Footer (same pattern as Guides) */
+    .footer-divider{
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin: 0 auto 16px;
+      max-width: 980px;
+    }
+
+    .site-footer{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 18px 60px;
+      text-align: center;
+      color: #a6b6d6;
+      font-size: 13px;
+    }
+
+    .footer-links{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a{
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover{
+      text-decoration: underline;
+      color: var(--accent2);
+    }
+
+    .footer-note{
+      margin-top: 10px;
+      color: #a6b6d6;
+      line-height: 1.5;
     }
 
     @media (max-width: 720px){
@@ -142,19 +182,6 @@
       .card{ padding: 20px 18px; }
       .title{ font-size: 24px; }
       .desc{ font-size: 16px; }
-    }
-        .footer-links {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #a6b6d6;
-    }
-    .footer-links a {
-      color: #9bb5ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -172,204 +199,182 @@
       tongue/pin weight, and the common “it tows fine but I’m overloaded” mistakes.
     </p>
 
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-ford-ranger-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Ford Ranger Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • SUV Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Ford Ranger can safely tow a travel trailer once payload, tongue weight, and bed cargo are factored in.  
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-tesla-model-3-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Tesla Model 3 Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • SUV Trailer Towing</p>
-          <p class="desc">
-            A real-world example explaining why the Tesla Model 3 is usually limited to very small trailers once payload, tongue weight, and hitch limits are considered. 
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-toyota-rav4-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Toyota RAV4 Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • SUV Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Toyota RAV4 can safely tow a travel trailer once payload, tongue weight, and passengers are factored in.
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-honda-pilot-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Honda Pilot Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • SUV Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Honda Pilot can safely tow a travel trailer once payload, tongue weight, and passengers are factored in.
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-chevy-colorado-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Chevy Colorado Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • Truck Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Chevy Colorado can safely tow a travel trailer once payload, tongue weight, and cargo are factored in.
-        </a>    
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-subaru-outback-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Subaru Outback Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • SUV Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Subaru Outback can safely tow a travel trailer once payload, tongue weight, and cargo are factored in. 
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-toyota-highlander-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Toyota Highlander Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • EV Car Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Toyota Highlander can safely tow a travel trailer once payload, tongue weight, and passengers are factored in. 
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-tesla-model-y-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Tesla Model Y Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • EV Car Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing whether a Tesla Model Y can safely tow a travel trailer once payload, tongue weight, and range are considered. 
-        </a>
-      </article>
-
-      <section class="grid">
-      <article class="card">
-      <a href="../can-a-tesla-model-x-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Tesla Model X Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • EV Car Trailer Towing</p>
-          <p class="desc">
-            A real-world towing example showing how a Tesla Model X handles a travel trailer when payload, tongue weight, and range are taken into account—not just advertised tow rating.
-        </a>
-      </article>
-          
     <section class="grid">
+
       <article class="card">
-      <a href="../can-a-tesla-cybertruck-tow-a-travel-trailer.html">
-          <h2 class="title">Can a Tesla Cybertruck Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • EV Truck Trailer Towing</p>
+        <a href="../can-a-ford-ranger-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Ford Ranger Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • Truck trailer towing</p>
           <p class="desc">
-            Cybertruck tow rating looks massive—but tongue weight and payload can still end the plan fast. Here’s a realistic trailer example and the exact checks to run.
+            A real-world towing example showing whether a Ford Ranger can safely tow a travel trailer once payload, tongue weight, and bed cargo are factored in.
           </p>
         </a>
       </article>
-      
-      <!-- Example #1 -->
+
+      <article class="card">
+        <a href="../can-a-tesla-model-3-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Tesla Model 3 Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • EV towing reality</p>
+          <p class="desc">
+            Why the Model 3 is usually limited to very small trailers once payload, tongue weight, and hitch limits are considered.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-toyota-rav4-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Toyota RAV4 Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • SUV trailer towing</p>
+          <p class="desc">
+            A real-world towing example showing whether a Toyota RAV4 can safely tow a travel trailer once payload, tongue weight, and passengers are factored in.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-honda-pilot-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Honda Pilot Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • SUV trailer towing</p>
+          <p class="desc">
+            A realistic setup showing where Pilot towing hits limits once passengers and tongue weight are included.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-chevy-colorado-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Chevy Colorado Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • Truck trailer towing</p>
+          <p class="desc">
+            A real-world towing example showing whether a Chevy Colorado can safely tow a travel trailer once payload, tongue weight, and cargo are factored in.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-subaru-outback-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Subaru Outback Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • Crossover towing</p>
+          <p class="desc">
+            A realistic look at Outback towing limits once tongue weight, passengers, and gear are included.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-toyota-highlander-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Toyota Highlander Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • SUV trailer towing</p>
+          <p class="desc">
+            A real-world towing example showing whether a Toyota Highlander can safely tow a travel trailer once payload, tongue weight, and passengers are factored in.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-tesla-model-y-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Tesla Model Y Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • EV towing reality</p>
+          <p class="desc">
+            A real-world towing example showing whether a Tesla Model Y can safely tow a travel trailer once payload, tongue weight, and range are considered.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-tesla-model-x-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Tesla Model X Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • EV tow rating vs reality</p>
+          <p class="desc">
+            How a Model X handles travel trailer towing when payload, tongue weight, and range are taken into account — not just the advertised tow rating.
+          </p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="../can-a-tesla-cybertruck-tow-a-travel-trailer.html">
+          <h2 class="title">Can a Tesla Cybertruck Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • EV truck trailer towing</p>
+          <p class="desc">
+            Cybertruck tow rating looks massive — but tongue weight and payload can still end the plan fast. Here’s a realistic trailer example and the checks to run.
+          </p>
+        </a>
+      </article>
+
       <article class="card">
         <a href="../can-a-suburban-tow-a-car-trailer.html">
           <h2 class="title">Can a Chevy Suburban Tow a Car Trailer?</h2>
           <p class="meta">Vehicle example • Car trailer towing</p>
           <p class="desc">
-            A payload-first breakdown of a realistic Suburban + car trailer setup, including tongue weight,
-            passengers, and cargo.
+            A payload-first breakdown of a realistic Suburban + car trailer setup, including tongue weight, passengers, and cargo.
           </p>
         </a>
       </article>
 
-      <!-- Example #2 -->
       <article class="card">
         <a href="../how-heavy-is-a-uhaul-car-trailer.html">
           <h2 class="title">How Heavy Is a U-Haul Car Trailer Really?</h2>
           <p class="meta">Trailer example • U-Haul weights</p>
           <p class="desc">
-            Realistic weights, what the trailer actually adds, and why tongue weight can hit payload limits
-            faster than people expect.
+            Realistic weights, what the trailer actually adds, and why tongue weight can hit payload limits faster than people expect.
           </p>
         </a>
       </article>
 
-            <!-- Example #2 -->
       <article class="card">
         <a href="../can-a-ford-f150-tow-a-travel-trailer.html">
-          <h2 class="title">Can an Ford F-150 Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • Travel Trailer</p>
+          <h2 class="title">Can a Ford F-150 Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • Travel trailer towing</p>
           <p class="desc">
             Why many F-150 travel trailer setups hit payload limits long before tow rating — even when the trailer seems “light.”
           </p>
         </a>
       </article>
 
-                  <!-- Example #2 -->
       <article class="card">
         <a href="../can-a-jeep-grand-cherokee-tow-a-travel-trailer.html">
-          <h2 class="title">Can an Jeep Grand Cherokee Tow a Travel Trailer?</h2>
-          <p class="meta">Vehicle example • Travel Trailer</p>
+          <h2 class="title">Can a Jeep Grand Cherokee Tow a Travel Trailer?</h2>
+          <p class="meta">Vehicle example • Travel trailer towing</p>
           <p class="desc">
             A realistic look at Grand Cherokee towing limits, where tongue weight and passengers often exceed payload before you expect.
           </p>
         </a>
       </article>
 
-          <!-- Example #3 -->
-          <article class="card">
+      <article class="card">
         <a href="../can-a-toyota-tacoma-tow-a-travel-trailer.html">
           <h2 class="title">Can a Toyota Tacoma Tow a Travel Trailer?</h2>
           <p class="meta">Vehicle example • Travel trailer towing</p>
           <p class="desc">
-             Why midsize trucks like the Tacoma often run out of payload when towing travel trailers — even when under the tow rating.
+            Why midsize trucks like the Tacoma often run out of payload when towing travel trailers — even when under the tow rating.
           </p>
         </a>
       </article>
-    
+
     </section>
 
-    <p class="footer">
+    <p class="tip">
       Tip: Want a specific scenario? Start with the calculator and then pick an example that matches your vehicle/trailer type.
     </p>
-    <footer>
-  <div class="footer-links">
-    <a href="/about.html">About</a> •
-    <a href="/privacy-policy.html">Privacy Policy</a> •
-    <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> •
-    <a href="/contact.html">Contact</a>
-  </div>
-
-  <div style="margin-top:12px;">
-    Informational only. Always verify ratings using your vehicle’s door sticker,
-    owner’s manual, and real-world scale measurements.
-  </div>
-</footer>    
   </main>
+
+  <hr class="footer-divider">
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <span>•</span>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="/affiliate-disclosure.html">Affiliate Disclosure</a>
+      <span>•</span>
+      <a href="/contact.html">Contact</a>
+    </div>
+
+    <div class="footer-note">
+      Informational only. Always verify ratings using your vehicle’s door sticker,
+      owner’s manual, and real-world scale measurements.
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
