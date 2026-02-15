@@ -2,243 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Can a Tesla Model X Tow a Travel Trailer? | TowCalculator</title>
+  <meta name="description" content="A real-world towing example showing whether a Tesla Model X can safely tow a travel trailer once payload, tongue weight, and cargo are factored in." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Can a Tesla Model X Tow a Travel Trailer? (Real-World Payload Check) | TowCalculator.net</title>
-  <meta name="description" content="Yes, a Tesla Model X can tow a travel trailer—but payload and tongue weight usually decide the real limit. Use this simple checklist to verify your setup safely." />
+  <link rel="icon" href="/favicon.ico" />
 
   <style>
-    :root{
-      --bg0:#050914;
-      --bg1:#081427;
-      --bg2:#0a2142;
-      --text:#e9f0ff;
-      --muted:#b9c6e6;
-      --muted2:#93a7d6;
-      --line:rgba(255,255,255,.10);
-      --card:rgba(10, 28, 56, .70);
-      --pill:rgba(20, 52, 104, .55);
-      --accent:#5ea0ff;
-      --accent2:#2f7cff;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 540px at 60% 10%, rgba(70,140,255,.35), transparent 65%),
-        radial-gradient(1000px 700px at 20% 20%, rgba(40,120,255,.22), transparent 65%),
-        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 38%, var(--bg2) 100%);
-      overflow-x:hidden;
-    }
-
-    a{color:var(--text); text-decoration:none}
-    a:hover{color:#ffffff; text-decoration:underline}
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 48px 18px 72px;
-    }
-    .topbar{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:flex-start;
-      margin-bottom: 22px;
-      opacity:.95;
-    }
-    .back{
-      color:var(--muted);
-      font-weight:600;
-      letter-spacing:.2px;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:var(--pill);
-      color:var(--muted);
-      font-weight:700;
-      font-size:14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .pill:hover{ text-decoration:none; color:#fff; border-color: rgba(120,170,255,.45); }
-
-    header{
-      padding: 12px 0 8px;
-    }
-    h1{
-      margin: 10px 0 10px;
-      font-size: clamp(34px, 4.6vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      text-shadow: 0 10px 40px rgba(0,0,0,.45);
-    }
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 12px;
-      align-items:center;
-      margin: 10px 0 18px;
-      color:var(--muted2);
-      font-weight:650;
-      font-size: 14px;
-    }
-    .dot{opacity:.7}
-    .kicker{
-      font-size: clamp(16px, 2.1vw, 20px);
-      line-height: 1.55;
-      color: var(--muted);
-      max-width: 860px;
-      margin: 0 0 22px;
-    }
-
-    .card{
-      background: var(--card);
-      border:1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px 18px;
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(420px 180px at 20% 0%, rgba(120,180,255,.20), transparent 60%);
-      pointer-events:none;
-    }
-    .card > *{position:relative}
-
-    .disclosure{
-      border-left: 5px solid var(--accent2);
-      padding: 16px 16px;
-      margin: 22px 0 28px;
-    }
-    .disclosure strong{color:#fff}
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin: 18px 0 26px;
-    }
-    @media (min-width: 820px){
-      .grid{grid-template-columns: 1fr 1fr}
-    }
-
-    h2{
-      margin: 34px 0 12px;
-      font-size: 28px;
-      letter-spacing:-0.01em;
-    }
-    h3{
-      margin: 18px 0 10px;
-      font-size: 19px;
-      letter-spacing:-0.01em;
-      color:#fff;
-    }
-    p{margin: 0 0 14px; color:var(--muted); line-height: 1.65; font-size: 16px;}
-    ul{margin: 8px 0 14px 18px; color:var(--muted); line-height:1.65}
-    li{margin: 6px 0}
-
-    .callout{
-      border-left: 5px solid rgba(100,170,255,.9);
-      padding: 16px 16px;
-      margin: 18px 0;
-    }
-    .callout .label{
-      display:inline-block;
-      font-weight: 900;
-      letter-spacing:.2px;
-      color:#fff;
-      margin-bottom: 6px;
-    }
-    .tagrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 10px;
-    }
-    .tag{
-      display:inline-flex;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(10,30,62,.55);
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 13.5px;
-    }
-
-    .calc{
-      background: rgba(6,16,34,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      padding: 16px;
-      margin: 14px 0 0;
-    }
-    .calc .title{
-      font-weight: 900;
-      color:#fff;
-      margin-bottom: 10px;
-    }
-    .row{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      padding: 8px 0;
-      border-bottom: 1px dashed rgba(255,255,255,.10);
-      color: var(--muted);
-    }
-    .row:last-child{border-bottom:none}
-    .row b{color:#fff}
-    .note{
-      margin-top: 12px;
-      font-size: 13.5px;
-      color: rgba(185,198,230,.92);
-    }
-
-    .product a{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(120,170,255,.35);
-      background: rgba(20,52,104,.35);
-      text-decoration:none;
-      font-weight: 850;
-      color:#fff;
-    }
-    .product a:hover{
-      border-color: rgba(120,170,255,.65);
-      background: rgba(30,72,140,.45);
-      text-decoration:none;
-    }
-    .product small{
-      display:block;
-      margin-top: 8px;
-      color: rgba(185,198,230,.9);
-      line-height: 1.45;
-    }
-
-    .footer{
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      color: rgba(185,198,230,.85);
-      font-size: 13.5px;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #0b1220;
+      color: #e7eefc;
       line-height: 1.6;
     }
-    .footer a{color:#d9e7ff}
-          .footer-links {
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+    h1, h2 { line-height: 1.3; }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    h2 { margin-top: 36px; }
+    p { color: #cbd5f5; }
+    ul {
+      color: #cbd5f5;
+      padding-left: 20px;
+    }
+    a { color: #9bb5ff; }
+
+    .post-tags {
+      margin: 12px 0 20px;
+    }
+    .post-tags a {
+      font-size: 13px;
+      color: #9bb5ff;
+      text-decoration: none;
+      border: 1px solid #2b57ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+    .post-tags a:hover {
+      background: rgba(43,87,255,.15);
+    }
+
+    .callout {
+      background: #111b2e;
+      border-left: 4px solid #2b57ff;
+      padding: 16px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+
+    .cta {
+      background: #132342;
+      border: 1px solid #233257;
+      padding: 20px;
+      margin: 32px 0;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: #2b57ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .affiliate {
+      background: #0f1b33;
+      border: 1px solid #233257;
+      padding: 16px;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    footer {
+      margin-top: 48px;
+      font-size: 13px;
+      color: #a6b6d6;
+    }
+    .footer-links {
       margin-top: 18px;
       font-size: 13px;
       color: #a6b6d6;
@@ -255,270 +106,177 @@
 </head>
 
 <body>
-  <main class="wrap">
-    <nav class="topbar">
-      <a class="back" href="/blog/">← Back to Blog</a>
-      <a class="pill" href="/blog/examples/">Examples</a>
-    </nav>
+  <div class="wrap">
 
-    <header>
-      <h1>Can a Tesla Model X Tow a Travel Trailer?</h1>
+    <p class="post-tags">
+      <a href="/blog/examples/">Examples</a>
+    </p>
 
-      <div class="meta">
-        <span>Example setup</span><span class="dot">•</span>
-        <span>Payload-first towing</span><span class="dot">•</span>
-        <span>Tow rating isn’t the limiter (usually)</span>
-      </div>
+    <h1>Can a Tesla Model X Tow a Travel Trailer?</h1>
 
-      <p class="kicker">
-        The Model X can have a strong tow rating on paper — but travel trailers rarely “fail” on tow rating first.
-        In the real world, the limiting factor is almost always <b>payload</b> (because tongue weight + people + cargo add up fast).
-        This guide shows a simple way to sanity-check a Model X + travel trailer setup before you commit.
-      </p>
+    <p>
+      The Tesla Model X can have a respectable tow rating on paper, which makes it tempting to tow a small
+      travel trailer for weekend trips.
+    </p>
 
-      <section class="card disclosure">
-        <p style="margin:0;">
-          <strong>Affiliate disclosure:</strong>
-          Some links below are Amazon affiliate links. If you buy through them, TowCalculator.net may earn a small commission at no extra cost to you.
-        </p>
-      </section>
-    </header>
+    <p>
+      In real-world towing, the limiting factor is usually not tow rating —
+      it’s <strong>payload</strong> and <strong>tongue weight</strong>.
+      This example shows how those limits show up in practice (plus why range planning matters).
+    </p>
 
-    <section class="grid">
-      <div class="card">
-        <h3>Quick answer</h3>
-        <p>
-          <b>Yes</b> — a Tesla Model X can tow a travel trailer, but the “safe” trailer size is usually limited by:
-          <b>payload remaining</b>, <b>tongue weight</b>, and <b>how you load the vehicle</b>.
-        </p>
-        <ul>
-          <li>If your passengers + cargo are heavy, your “real” trailer limit drops fast.</li>
-          <li>Even a “moderate” trailer can push payload over the edge with 10–15% tongue weight.</li>
-          <li>Range will drop — plan your trips with extra charging time and buffer.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>The simplest safe check</h3>
-        <p>
-          Treat towing like a payload math problem:
-        </p>
-        <div class="calc">
-          <div class="title">Payload used =</div>
-          <div class="row"><span>Passengers</span><b>+</b></div>
-          <div class="row"><span>Cargo in the vehicle</span><b>+</b></div>
-          <div class="row"><span>Hitch hardware / accessories</span><b>+</b></div>
-          <div class="row"><span><b>Tongue weight</b> (usually 10–15% of the trailer)</span><b>=</b></div>
-          <div class="row"><span><b>Total payload used</b></span><b>(must be ≤ your payload sticker)</b></div>
-        </div>
-        <p class="note">
-          Your exact payload is on the door-jamb sticker (it varies a lot by configuration).
-          Always use your sticker, not a forum number.
-        </p>
-      </div>
-    </section>
-
-    <h2>Model X towing, on paper vs real life</h2>
-    <section class="card">
-      <p>
-        Tow rating is the headline number everyone quotes. But for travel trailers, the real-world bottleneck is often:
-        <b>tongue weight</b> + <b>people</b> + <b>stuff</b>.
-        That total hits payload long before you hit the tow rating.
-      </p>
-
-      <div class="tagrow">
-        <span class="tag">Tongue weight: typically 10–15%</span>
-        <span class="tag">Payload varies by trim/options</span>
-        <span class="tag">Range drop is normal</span>
-      </div>
-
-      <div class="callout">
-        <div class="label">Tip:</div>
-        <p style="margin:0;">
-          If you only do one thing, <b>measure tongue weight</b> instead of guessing.
-          Guessing is how “looks fine” becomes “why does my rear feel squishy?”
-          (More on tongue weight here:
-          <a href="/blog/tongue-weight-explained.html">Tongue Weight Explained</a>.)
-        </p>
-      </div>
-    </section>
-
-    <h2>What a travel trailer “really adds” to a Model X</h2>
-    <section class="card">
-      <p>
-        Travel trailers are rarely loaded exactly at their “dry weight.” By the time you add batteries, propane, water, food, and gear,
-        the <b>loaded trailer weight</b> is what matters.
-      </p>
-
-      <div class="calc">
-        <div class="title">Tongue weight estimate (rule of thumb)</div>
-        <div class="row"><span>Loaded trailer 3,500 lb</span><b>~350–525 lb tongue</b></div>
-        <div class="row"><span>Loaded trailer 5,000 lb</span><b>~500–750 lb tongue</b></div>
-        <div class="row"><span>Loaded trailer 6,000 lb</span><b>~600–900 lb tongue</b></div>
-      </div>
-
-      <p class="note">
-        That tongue weight counts against: payload, hitch rating limits, and rear axle/tire capacity.
-        This is why payload matters more than tow rating:
-        <a href="/blog/payload-vs-tow-rating.html">Why Payload Matters More Than Tow Rating</a>.
-      </p>
-    </section>
-
-    <h2>Three realistic scenarios (payload-first)</h2>
-    <section class="grid">
-      <div class="card">
-        <h3>Scenario A: “Light” trailer (more likely to work)</h3>
-        <p>
-          A smaller trailer can be totally reasonable if you keep passenger/cargo weight under control.
-          The goal is to keep tongue weight modest and avoid “stuff creep.”
-        </p>
-
-        <div class="calc">
-          <div class="title">Example payload math</div>
-          <div class="row"><span>Driver + passenger</span><b>350 lb</b></div>
-          <div class="row"><span>Cargo (cooler, bags, etc.)</span><b>120 lb</b></div>
-          <div class="row"><span>Hitch + accessories</span><b>80 lb</b></div>
-          <div class="row"><span><b>Tongue weight</b> (3,500 lb trailer @ 12%)</span><b>420 lb</b></div>
-          <div class="row"><span><b>Total payload used</b></span><b>970 lb</b></div>
-        </div>
-
-        <p class="note">
-          Compare your total to your door sticker payload. If you’re near the limit, go lighter.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Scenario B: “Normal” trailer (often payload-limited)</h3>
-        <p>
-          A mid-size travel trailer can push payload hard once you add people and cargo.
-          This is where setups feel “fine” until you do the math.
-        </p>
-
-        <div class="calc">
-          <div class="title">Example payload math</div>
-          <div class="row"><span>2 adults + 2 kids</span><b>520 lb</b></div>
-          <div class="row"><span>Cargo (food, bags, chairs)</span><b>180 lb</b></div>
-          <div class="row"><span>Hitch + accessories</span><b>90 lb</b></div>
-          <div class="row"><span><b>Tongue weight</b> (5,000 lb trailer @ 13%)</span><b>650 lb</b></div>
-          <div class="row"><span><b>Total payload used</b></span><b>1,440 lb</b></div>
-        </div>
-
-        <p class="note">
-          Many “normal family” loads end up payload-tight fast. Don’t guess—check.
-        </p>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top:14px;">
-      <h3>Scenario C: Heavy trailer (tow rating might be fine, payload usually isn’t)</h3>
-      <p>
-        This is the classic trap: “The tow rating says it can.” But tongue weight and cargo make it a bad real-world fit.
-        If you’re in this zone, you often need a different trailer strategy (lighter trailer) rather than a different hitch.
-      </p>
-
-      <div class="callout">
-        <div class="label">Safety note:</div>
-        <p style="margin:0;">
-          A weight distribution hitch can help level and improve stability, but it does <b>not</b> magically erase payload.
-          It still counts. Learn what it fixes (and doesn’t):
-          <a href="/blog/weight-distribution-hitch-setup.html">Weight Distribution Hitch Setup</a>.
-        </p>
-      </div>
-
-      <p class="note">
-        If you ever feel sway, treat it seriously:
-        <a href="/blog/trailer-sway-why-it-happens.html">Trailer Sway: Why It Happens</a>.
-      </p>
-    </section>
-
-    <h2>3 Amazon items that help you tow safely</h2>
-    <section class="grid">
-      <div class="card product">
-        <h3>1) Tongue weight scale (measure, don’t guess)</h3>
-        <p>
-          Tongue weight is the quickest way to accidentally blow payload. A scale prevents surprises.
-        </p>
-        <a
-          href="https://amzn.to/4r4bmTR"
-          target="_blank"
-          rel="nofollow sponsored noopener"
-        >
-          Get a tongue weight scale →
-        </a>
-      </div>
-
-      <div class="card product">
-        <h3>2) Trailer brake controller (if your trailer uses electric brakes)</h3>
-        <p>
-          Many travel trailers use electric brakes. A quality controller helps stop smoothly and safely.
-          (Verify compatibility with your specific trailer wiring setup.)
-        </p>
-        <a
-          href="https://amzn.to/46s9Jal"
-          target="_blank"
-          rel="nofollow sponsored noopener"
-        >
-          Get a brake controller →
-        </a>
-        <small>
-          If your trailer has surge brakes, you may not need this. Match the hardware to your trailer.
-        </small>
-      </div>
-
-      <div class="card product">
-        <h3>3) Weight distribution hitch kit (for stability and leveling)</h3>
-        <p>
-          WDH can improve handling and reduce squat on some setups. Choose the correct rating range for your tongue weight.
-        </p>
-        <a
-          href="https://amzn.to/4koaxmh"
-          target="_blank"
-          rel="nofollow sponsored noopener"
-        >
-          Get a WDH kit →
-        </a>
-        <small>
-          WDH helps stability, but it doesn’t remove payload limits—still do the math.
-        </small>
-      </div>
-    </section>
-
-    <h2>Model X towing checklist (quick)</h2>
-    <section class="card">
-      <ul>
-        <li><b>Check your door sticker payload</b> (your exact number, not a generic spec).</li>
-        <li><b>Estimate loaded trailer weight</b> (not dry weight).</li>
-        <li><b>Estimate tongue weight</b> at 10–15% (then measure when possible).</li>
-        <li><b>Add up payload used</b>: people + cargo + hitch + tongue weight.</li>
-        <li><b>Verify tire pressures</b> (vehicle + trailer) and load rating.</li>
-        <li><b>Confirm trailer brakes</b> work and are adjusted.</li>
-        <li><b>Expect range drop</b> and plan charging with buffer.</li>
-      </ul>
-
-      <div class="callout">
-        <div class="label">If you want the easiest “yes/no” check:</div>
-        <p style="margin:0;">
-          Keep the trailer lighter than you think you need, keep tongue weight controlled,
-          and avoid loading the vehicle like a storage unit. Most “it tows great” stories start with conservative weights.
-        </p>
-      </div>
-    </section>
-
-    <div class="footer">
-<footer>
-  <div class="footer-links">
-    <a href="/about.html">About</a> •
-    <a href="/privacy-policy.html">Privacy Policy</a> •
-    <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> •
-    <a href="/contact.html">Contact</a>
-  </div>
-
-  <div style="margin-top:12px;">
-    Informational only. Always verify ratings using your vehicle’s door sticker,
-    owner’s manual, and real-world scale measurements.
-  </div>
-</footer>
+    <div class="callout">
+      <strong>Affiliate disclosure:</strong><br>
+      Some links below are Amazon affiliate links. If you purchase through them,
+      TowCalculator may earn a small commission at no extra cost to you.
     </div>
-  </main>
+
+    <h2>Why payload matters on the Model X</h2>
+
+    <p>
+      Tow ratings assume an almost empty vehicle: one driver, no cargo, and ideal conditions.
+      But in real use, all of the following count against payload:
+    </p>
+
+    <ul>
+      <li>Driver and passengers</li>
+      <li>Frunk/cargo area gear (coolers, bags, camping gear)</li>
+      <li>Aftermarket accessories</li>
+      <li>Hitch hardware</li>
+      <li><strong>Tongue weight from the trailer</strong></li>
+    </ul>
+
+    <p>
+      Once payload is exceeded, handling and stability can suffer — even if the trailer itself is under the tow rating.
+      Always use the payload number on your door-jamb sticker (it can vary by configuration).
+    </p>
+
+    <h2>Typical tongue weight for travel trailers</h2>
+
+    <p>
+      Most travel trailers place about <strong>10–15%</strong> of their loaded weight on the hitch.
+      That means:
+    </p>
+
+    <ul>
+      <li>3,500 lb trailer → ~350–525 lb tongue weight</li>
+      <li>5,000 lb trailer → ~500–750 lb tongue weight</li>
+      <li>6,000 lb trailer → ~600–900 lb tongue weight</li>
+    </ul>
+
+    <div class="callout">
+      Tongue weight alone can consume a large portion of a Model X’s available payload
+      before you add passengers or cargo.
+    </div>
+
+    <h2>A realistic Tesla Model X towing example</h2>
+
+    <p>
+      Let’s look at a common weekend setup:
+    </p>
+
+    <ul>
+      <li>Driver + passenger: <strong>350 lb</strong></li>
+      <li>Cargo in the vehicle (bags, cooler, misc): <strong>150 lb</strong></li>
+      <li>Hitch hardware: <strong>80 lb</strong></li>
+      <li>Tongue weight (4,500 lb trailer @ 12%): <strong>540 lb</strong></li>
+    </ul>
+
+    <p>
+      <strong>Total payload used:</strong> ~<strong>1,120 lb</strong>
+    </p>
+
+    <p>
+      Depending on your exact Model X payload sticker, this can be workable — but the margin can shrink quickly with
+      extra passengers, heavier cargo, or a heavier trailer.
+    </p>
+
+    <h2>Range reality (EV towing)</h2>
+
+    <p>
+      With a travel trailer, expect a significant range drop. The bigger and less-aerodynamic the trailer,
+      the larger the hit. Plan routes with extra charging time and a buffer so you’re not arriving at low state-of-charge.
+    </p>
+
+    <h2>So… can a Tesla Model X tow a travel trailer?</h2>
+
+    <p>
+      <strong>Yes — within reason.</strong> The Model X can tow a travel trailer safely when:
+    </p>
+
+    <ul>
+      <li>The trailer stays in a modest weight range</li>
+      <li>Tongue weight is kept in a safe range (and measured when possible)</li>
+      <li>Passengers/cargo aren’t pushing payload to the edge</li>
+      <li>You plan for EV range loss</li>
+    </ul>
+
+    <p>
+      Heavier trailers quickly become a payload issue — not a tow-rating issue.
+    </p>
+
+    <div class="cta">
+      <strong>Want to check your exact setup?</strong>
+      <p>
+        Use the towing calculator to estimate payload usage,
+        tongue weight, and remaining margin.
+      </p>
+      <a href="/">Use the Towing Calculator</a>
+    </div>
+
+    <h2>Helpful gear for safer Model X towing</h2>
+
+    <div class="affiliate">
+      <strong>1) Tongue weight scale</strong>
+      <p>
+        Measuring tongue weight removes guesswork and helps prevent overload.
+      </p>
+      <a href="https://amzn.to/4cj24yM"
+         target="_blank"
+         rel="nofollow sponsored noopener">
+        View tongue weight scale on Amazon
+      </a>
+    </div>
+
+    <div class="affiliate">
+      <strong>2) Weight distribution hitch</strong>
+      <p>
+        Can improve stability and reduce rear squat on heavier travel trailers.
+        Choose the correct rating range.
+      </p>
+      <a href="https://amzn.to/4ahPDRm"
+         target="_blank"
+         rel="nofollow sponsored noopener">
+        View weight distribution hitch on Amazon
+      </a>
+    </div>
+
+    <div class="affiliate">
+      <strong>3) Trailer tire pressure monitoring system</strong>
+      <p>
+        Tire heat and underinflation are common causes of trailer tire failure.
+      </p>
+      <a href="https://amzn.to/4kumebt"
+         target="_blank"
+         rel="nofollow sponsored noopener">
+        View trailer TPMS on Amazon
+      </a>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="/about.html">About</a> •
+        <a href="/privacy-policy.html">Privacy Policy</a> •
+        <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> •
+        <a href="/contact.html">Contact</a>
+      </div>
+
+      <div style="margin-top:12px;">
+        Informational only. Always verify ratings using your vehicle’s door sticker,
+        owner’s manual, and real-world scale measurements.
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
