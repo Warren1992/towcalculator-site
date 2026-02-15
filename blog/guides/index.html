@@ -21,6 +21,7 @@
     }
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -30,11 +31,13 @@
         radial-gradient(900px 600px at 80% 30%, rgba(0,210,255,.12), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
+
     .wrap{
       max-width: 980px;
       margin: 0 auto;
-      padding: 56px 18px 80px;
+      padding: 56px 18px 40px;
     }
+
     .topbar{ margin-bottom: 18px; }
     .back{
       color: var(--accent);
@@ -45,12 +48,14 @@
       gap:8px;
     }
     .back:hover{ color: var(--accent2); text-decoration: underline; }
+
     h1{
       margin: 8px 0 10px;
       font-size: 48px;
       line-height: 1.08;
       letter-spacing: -0.6px;
     }
+
     .subtitle{
       margin: 0 0 26px;
       color: var(--muted);
@@ -58,12 +63,14 @@
       line-height: 1.55;
       max-width: 70ch;
     }
+
     .grid{
       display:flex;
       flex-direction:column;
       gap: 22px;
       margin-top: 18px;
     }
+
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border: 1px solid var(--border);
@@ -72,11 +79,13 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
     }
+
     .card a{
       text-decoration:none;
       color: inherit;
       display:block;
     }
+
     .title{
       margin: 0 0 10px;
       font-size: 30px;
@@ -85,12 +94,14 @@
       font-weight: 800;
       letter-spacing: -0.2px;
     }
+
     .meta{
       margin: 0 0 14px;
       color: var(--muted2);
       font-size: 14px;
       letter-spacing: .2px;
     }
+
     .desc{
       margin: 0;
       color: var(--text);
@@ -99,34 +110,66 @@
       opacity: .95;
       max-width: 85ch;
     }
+
     .card:hover{
       border-color: rgba(155,181,255,.45);
       transform: translateY(-1px);
       transition: transform .12s ease, border-color .12s ease;
     }
+
     .card:hover .title{
       color: var(--accent2);
       transition: color .12s ease;
     }
+
+    /* Footer */
+    .site-footer{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 18px 60px;
+      text-align: center;
+      color: #a6b6d6;
+      font-size: 13px;
+    }
+
+    .footer-divider{
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin: 0 auto 16px;
+      max-width: 980px;
+    }
+
+    .footer-links{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a{
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover{
+      text-decoration: underline;
+      color: var(--accent2);
+    }
+
+    .footer-note{
+      margin-top: 10px;
+      color: #a6b6d6;
+      line-height: 1.5;
+    }
+
     @media (max-width: 720px){
       h1{ font-size: 38px; }
       .subtitle{ font-size: 16px; }
       .card{ padding: 20px 18px; }
       .title{ font-size: 24px; }
       .desc{ font-size: 16px; }
-    }
-        .footer-links {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #a6b6d6;
-    }
-    .footer-links a {
-      color: #9bb5ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -144,7 +187,7 @@
 
     <section class="grid">
 
-        <article class="card">
+      <article class="card">
         <a href="../trailer-sway-why-it-happens.html">
           <h2 class="title">Trailer Sway: Why It Happens (And How to Fix It Safely)</h2>
           <p class="meta">Foundational guide • Payload-first towing</p>
@@ -154,7 +197,7 @@
         </a>
       </article>
 
-        <article class="card">
+      <article class="card">
         <a href="../weight-distribution-hitch-setup.html">
           <h2 class="title">Weight Distribution Hitch Setup: What It Fixes (And What It Doesn’t)</h2>
           <p class="meta">Foundational guide • Payload-first towing</p>
@@ -184,7 +227,7 @@
         </a>
       </article>
 
-            <article class="card">
+      <article class="card">
         <a href="../how-to-weigh-your-truck-trailer-at-a-cat-scale.html">
           <h2 class="title">How to Weigh Your Truck + Trailer at a CAT Scale (Step-by-Step)</h2>
           <p class="meta">Foundational guide • Payload-first towing</p>
@@ -196,18 +239,24 @@
 
     </section>
   </main>
-  <footer>
-  <div class="footer-links">
-    <a href="/about.html">About</a> •
-    <a href="/privacy-policy.html">Privacy Policy</a> •
-    <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> •
-    <a href="/contact.html">Contact</a>
-  </div>
-  <div style="margin-top:12px;">
-    Informational only. Always verify ratings using your vehicle’s door sticker,
-    owner’s manual, and real-world scale measurements.
-  </div>
-</footer>
 
+  <hr class="footer-divider">
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <span>•</span>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="/affiliate-disclosure.html">Affiliate Disclosure</a>
+      <span>•</span>
+      <a href="/contact.html">Contact</a>
+    </div>
+
+    <div class="footer-note">
+      Informational only. Always verify ratings using your vehicle’s door sticker,
+      owner’s manual, and real-world scale measurements.
+    </div>
+  </footer>
 </body>
 </html>
