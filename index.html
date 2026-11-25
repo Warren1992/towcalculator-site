@@ -393,7 +393,43 @@
     }
   }
 
+  const weightInputs = {
+    payload: "Payload rating", towRating: "Tow rating", passengers: "Passenger weight",
+    cargo: "Cargo weight", hitchHardware: "Hitch hardware weight", gcwr: "GCWR",
+    vehicleActual: "Actual vehicle weight", trailerWeight: "Loaded trailer weight",
+    receiverTW: "Receiver tongue weight rating", receiverTow: "Receiver trailer weight rating"
+  };
+  const requiredWeights = new Set(["payload", "trailerWeight"]);
+  const resultFields = ["kpiTongue","kpiPayloadUsed","kpiPayloadLeft","kpiTowCheck","kpiCombined","kpiGcwrCheck"];
+
+  function validateWeights() {
+    const issues = [];
+    for (const [id, label] of Object.entries(weightInputs)) {
+      const field = $(id);
+      const value = field.value.trim();
+      if (field.validity.badInput || (value !== "" && (!Number.isFinite(Number(value)) || Number(value) < 0))) {
+        issues.push(label + " must be a valid nonnegative weight.");
+      } else if (requiredWeights.has(id) && (value === "" || Number(value) === 0)) {
+        issues.push("Enter a " + label.toLowerCase() + " greater than zero.");
+      }
+    }
+    return issues;
+  }
+
   function calculate() {
+    const issues = validateWeights();
+    if (issues.length) {
+      resultFields.forEach(id => $(id).textContent = "—");
+      const list = $("warningsList");
+      list.innerHTML = "";
+      for (const issue of issues) {
+        const li = document.createElement("li");
+        li.textContent = issue;
+        list.appendChild(li);
+      }
+      setStatus("yellow", "Check your inputs", "No result until the weights are valid.", "This setup has not been evaluated.");
+      return;
+    }
     const trailerType = $("trailerType").value;
     const profile = PROFILES[trailerType];
 
@@ -416,10 +452,6 @@
     const vehicleActual = num($("vehicleActual").value);
 
     const warnings = [];
-
-    // Validation
-    if (payload <= 0) addWarning(warnings, "Enter your vehicle payload rating from the door sticker (most important input).");
-    if (trailerWeight <= 0) addWarning(warnings, "Enter your trailer weight (loaded). Use conservative numbers if you’re unsure.");
 
     // Tongue/pin weight estimate
     const tongue = trailerWeight * twPct;
@@ -543,10 +575,20 @@
     const overReceiverTow = receiverTow > 0 && trailerWeight > receiverTow;
     const overGcwr = (gcwr > 0 && vehicleActual > 0 && trailerWeight > 0) && ((vehicleActual + trailerWeight) > gcwr);
 
-    if (overPayload || overTow || overReceiverTW || overReceiverTow || overGcwr) level = "red";
-    else if (tightPayload) level = "yellow";
+    const brakesMissing = trailerWeight > 3000 && brakes === "no";
+    const brakesUnverified = trailerWeight > 3000 && brakes === "unknown";
+    const ratingsUnverified = !towRating || !receiverTW || !receiverTow || (gcwr > 0 && !vehicleActual);
+    const ratingExceeded = overPayload || overTow || overReceiverTW || overReceiverTow || overGcwr;
+    if (ratingExceeded || brakesMissing) level = "red";
+    else if (tightPayload || brakesUnverified || ratingsUnverified) level = "yellow";
 
-    if (level === "red") {
+    if (brakesMissing) {
+      setStatus(
+        "red", ratingExceeded ? "High risk: no trailer brakes and a rating is exceeded" : "High risk: no trailer brakes reported",
+        "Do not rely on a weight margin to judge stopping ability. Check the vehicle and trailer manuals.",
+        "Verify required brake equipment and controller compatibility before towing."
+      );
+    } else if (level === "red") {
       setStatus(
         "red",
         "High risk: likely overloaded / exceeds a rating",
@@ -556,16 +598,16 @@
     } else if (level === "yellow") {
       setStatus(
         "yellow",
-        "Caution: tight margins",
-        "Double-check inputs, be conservative, and confirm with a weigh-in.",
-        "Margins are tight. Small changes in load could exceed ratings."
+        brakesUnverified ? "Caution: verify trailer brakes" : tightPayload ? "Caution: tight payload margin" : "Caution: some ratings not verified",
+        "Double-check the warnings and confirm actual weights and equipment.",
+        "This estimate cannot confirm that the setup is safe to tow."
       );
     } else {
       setStatus(
         "green",
-        "Looks reasonable (based on inputs)",
-        "Still verify ratings and confirm with real weights.",
-        "Based on these inputs, payload and ratings appear within limits. Still verify with real weights."
+        "No exceeded rating found in the numbers entered",
+        "An estimate only. Verify actual loaded weights, equipment, and all applicable ratings.",
+        "This result is not a towing safety clearance."
       );
     }
   }
