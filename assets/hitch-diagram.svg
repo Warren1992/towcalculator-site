@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="212" viewBox="0 0 490 212" fill="none">
+<defs><linearGradient id="car" x1="0" y1="75" x2="0" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#285244"/><stop offset="1" stop-color="#1c3e35"/></linearGradient><linearGradient id="trail" x1="320" y1="65" x2="315" y2="155" gradientUnits="userSpaceOnUse"><stop stop-color="#386356"/><stop offset="1" stop-color="#26483d"/></linearGradient></defs>
+<path d="M12 169H473M22 183H461M22 191H461" stroke="#9bcda5" stroke-opacity=".21" stroke-dasharray="4 7"/>
+<path d="M23 132v-18c1-7 7-11 14-13l18-21c8-8 15-10 23-10h34c11 0 20 6 24 14l9 16h57c6 0 9 4 9 10v22c0 6-6 9-12 9h-12c-5-18-27-18-32 0H83c-3-18-28-18-32 0H34c-8 0-11-3-11-9Z" fill="url(#car)" stroke="#9fcab0" stroke-width="2.2"/>
+<path d="M53 102 66 86c4-4 8-6 14-6h25v22H53Zm64-22c6 0 11 3 15 9l7 13h-22V80Z" fill="#142f29" stroke="#92bda4" stroke-width="1.8"/>
+<path d="M84 115h16m21 0h14M29 117h12m129-8h32" stroke="#9fcab0" stroke-width="1.8" stroke-linecap="round"/>
+<rect x="152" y="88" width="21" height="13" rx="2" fill="#88af8d"/><rect x="174" y="83" width="20" height="18" rx="2" fill="#badaad"/>
+<path d="M211 135h18l16-9h26" stroke="#a0cdb0" stroke-width="3" stroke-linecap="round"/>
+<path d="M269 132V82c0-18 15-29 32-29h107c16 0 28 12 28 25v54H269Z" fill="url(#trail)" stroke="#aad4b8" stroke-width="2.2"/>
+<rect x="286" y="76" width="53" height="24" rx="4" fill="#142f29" stroke="#92bda4" stroke-width="1.8"/>
+<path d="M355 131V77h40v54m-20-32h11m17 13h26m-153 4h63" stroke="#92bda4" stroke-width="1.8"/>
+<path d="M272 133h165" stroke="#b9d6a4" stroke-opacity=".55"/>
+<path d="M219 104v26m-6-11 6 7 6-7m-19 15h25" stroke="#d5f485" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="219" cy="133" r="4" fill="#d5f485"/>
+<g fill="#102922" stroke="#9ac8aa" stroke-width="2"><circle cx="67" cy="145" r="16"/><circle cx="171" cy="145" r="16"/><circle cx="334" cy="145" r="16"/><circle cx="373" cy="145" r="16"/></g>
+<g fill="#87ad98"><circle cx="67" cy="145" r="6"/><circle cx="171" cy="145" r="6"/><circle cx="334" cy="145" r="6"/><circle cx="373" cy="145" r="6"/></g>
+<path d="M72 61v-9h88m208-9v-9h35M219 98V77h23" stroke="#bedda8" stroke-opacity=".7" stroke-dasharray="3 3" stroke-linecap="round"/>
+<g fill="#d9ebd8" font-family="system-ui, sans-serif" font-size="9" font-weight="700" letter-spacing="1.4"><text x="79" y="42">VEHICLE PAYLOAD</text><text x="350" y="25">LOADED TRAILER</text><text x="161" y="66" fill="#e2f8a7">TONGUE WEIGHT</text></g>
+<rect x="14" y="180" width="104" height="19" rx="4" fill="#163b30" stroke="#3a6854"/><text x="24" y="193" fill="#c9e3cd" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2">WEIGHT DIAGRAM</text>
+</svg>
